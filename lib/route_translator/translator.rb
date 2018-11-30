@@ -86,6 +86,8 @@ module RouteTranslator
                  "native_#{current_locale_name}"
                elsif kaller.respond_to?("#{old_name}_#{current_locale_name}_#{suffix}")
                  current_locale_name
+               elsif kaller.respond_to?("#{old_name}_#{current_locale_name.split(/_/).first}_#{suffix}")
+                 current_locale_name.split(/_/).first
                else
                  I18n.default_locale.to_s.underscore
                end
